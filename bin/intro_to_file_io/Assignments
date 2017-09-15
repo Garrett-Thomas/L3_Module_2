@@ -1,3 +1,5 @@
+Study the examples in IntroToFileIO.java. Ask your teacher for any clarification you may need.
+
 1. Write a program that takes a message from the user and saves an encrypted form of that message in a new file. Use any encryption algorithm you choose.
 
 2. Create a separate program that asks for a encrypted file (you can use the JFileChooser) and prints the decrypted version.
