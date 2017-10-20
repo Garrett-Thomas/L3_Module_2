@@ -90,6 +90,7 @@ public class ToDoList implements ActionListener {
 		try {
 			BufferedReader br = new BufferedReader(new FileReader(FileName));
 			String line = br.readLine();
+			label.setText(line);
 			while(line != null){
 				line = br.readLine();
 				label.setText(label.getText() + line);
@@ -188,6 +189,36 @@ public class ToDoList implements ActionListener {
 				if (returnValue == JFileChooser.APPROVE_OPTION) {
 					File fileToSave = jfc.getSelectedFile();
 					System.out.println("Save as file: " + fileToSave.getAbsolutePath());
+					try {
+						FileWriter fw = new FileWriter(fileToSave);
+
+						BufferedReader br = new BufferedReader(new FileReader(listName));
+						String line = br.readLine();
+						while(line != null){
+							try {
+								fw.write(line);
+								 line = br.readLine();
+								/*
+								 * NOTE: To append to a file that already exists, add true as a second parameter
+								 * when calling the FileWriter constructor. (e.g. FileWriter fw = new
+								 * FileWriter("src/intro_to_file_io/test2.txt", true);)
+								 */
+
+
+								
+							} catch (IOException f) {
+								f.printStackTrace();
+							}
+						}
+						fw.close();
+						br.close();
+					} catch (FileNotFoundException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
 				
 			}
 		}
